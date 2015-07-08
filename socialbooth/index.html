@@ -1,0 +1,67 @@
+<!doctype HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" ng-app="app">
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>SocialBooth</title>
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<div class="wrap-outer">
+
+	<div class="wrap-inner" ng-controller="SocialBooth">
+
+		<div class="content-left" ng-init="loadPosts()">
+
+			<div class="social-wrap" id="social{{$index}}" ng-repeat="feedPost in feedPosts">
+				<div class="social-img">
+					<img ng-src="{{feedPost.img}}">
+				</div>
+				<div class="social-name">
+					<p>{{feedPost.name}} <span>{{feedPost.user}}</span></p>
+				</div>
+				<div class="social-post">
+					<p>{{feedPost.post}}</p>
+				</div>
+				<div class="social-icon">
+					<i class="icon icon-{{feedPost.type}}"></i>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="content-middle" ng-init="loadVideos()">
+
+			<div class="video-wrap"  id="video{{$index}}" ng-repeat="feedVideo in feedVideos">
+				<p class="video-name">{{feedVideo.name}}</p>
+				<video width="100%" height="auto" controls>
+					<source ng-src="{{feedVideo.src}}" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+			</div>
+
+		</div>
+
+		<div class="content-right" ng-init="loadImages()">
+
+			<div class="image-wrap" id="image{{$index}}" ng-repeat="feedImage in feedImages">
+				<div class="spinner">
+					<div class="bounce1"></div>
+					<div class="bounce2"></div>
+					<div class="bounce3"></div>
+				</div>
+				<img ng-src="{{feedImage.src}}">
+				<p class="image-name">{{feedImage.name}}</p>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<script type="text/javascript" src="scripts/angular.min.js"></script>
+<script type="text/javascript" src="scripts/socialbooth.js"></script>
+</body>
+</html>
