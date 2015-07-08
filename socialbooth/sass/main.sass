@@ -35,7 +35,7 @@ body
 	background-image: url(../images/bg-body.png)
 
 .content-left
-	width: 11.5%
+	width: 15%
 	left: 0
 	background-color: $color-secondary
 	box-shadow: 0 2px 6px rgba(0,0,0,0.25), -1px 0 0 fade-out($color-white, 0.925) inset
@@ -115,20 +115,25 @@ body
 		text-shadow: 0 1px 0 fade-out($color-white, 0.925)
 
 .content-middle
-	width: 71.5%
-	left: 11.5%
+	width: calc(67% - 2em)
+	left: 15%
 	background-color: lighten($color-dark, 2%)
 	box-shadow: 0 0 6px rgba(0,0,0,0.25) inset
 	padding: 1em
 	z-index: 2
+	position: relative
 
 	.video-name
 		color: fade-out($color-white, 0.5)
 		font-size: 1.25em
-		margin: 0.15em 0 0.75em
 		text-shadow:  0 -1px 0 rgba(0,0,0,0.5)
 		display: inline-block
-		width: 100%
+		width: calc(100% - 1.5em)
+		position: absolute
+		top: 1rem
+		padding: 0.5em 0.75em
+		left: 1rem
+		background: fade-out($color-black, 0.5)
 
 	video
 		height: auto
@@ -136,7 +141,7 @@ body
 		display: inline-block
 
 .content-right
-	width: 17%
+	width: 20%
 	right: 0
 	background-color: lighten($color-dark, 5%)
 	box-shadow: -2px 0 6px rgba(0,0,0,0.25), 1px 0 0 fade-out($color-white, 0.925) inset
