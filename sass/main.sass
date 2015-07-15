@@ -30,43 +30,43 @@ body
 .content-left, .content-middle, .content-right
 	position: absolute
 	height: 100%
+	top: 0
 	overflow: auto
 	vertical-align: top
 	background-image: url(../images/bg-body.png)
 
 .content-left
-	width: 15%
+	width: 14.75%
 	left: 0
 	background-color: $color-secondary
 	box-shadow: 0 2px 6px rgba(0,0,0,0.25), -1px 0 0 fade-out($color-white, 0.925) inset
 	z-index: 3
 
-	.social-wrap
-		float: left
+	.social-outer
+		display: inline-block
 		width: 100%
-		padding: 1em
+
+	.social-wrap
+		width: 100%
 		color: $color-lighter
-		margin: 0.5em 0
-		max-height: 24em
-		transition: all ease-in-out $trans-speed
-		overflow: hidden
 		opacity: 1
 		position: relative
+		display: block
+		border-bottom: 1px dotted fade-out($color-white, 0.85)
+		box-shadow: 0 1px 2px rgba(0,0,0,0.125)
+		background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 67%, rgba(255,255,255,0.033) 100%)
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(67%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,0.033)))
+		background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,0.033) 100%)
+		background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,0.033) 100%)
+		background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,0.033) 100%)
+		background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,0.033) 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#1affffff',GradientType=0 )
 
-		&.active
-			max-height: 0
-			padding: 0 1em
-			margin: 0
-			opacity: 0
-
-		&:nth-child(even)
-			background: fade-out($color-white, 0.95)
-
-			.social-icon
-				color: darken($color-primary-dark, 10%) 
-
-		&:last-child
-			margin-bottom: 0
+	.social-inner
+		display: inline-block
+		padding: 1.5em 1em
+		margin: 0.25em 0
+		width: 100%
 
 	.social-img
 		width: 3em
@@ -107,16 +107,16 @@ body
 
 	.social-icon
 		position: absolute
-		right: 0.33em
-		top: 0.33em
+		right: 0.67em
+		top: 0.67em
 		font-size: 1.5em
 		color: darken($color-primary-dark, 12.5%)
 		z-index: 0
 		text-shadow: 0 1px 0 fade-out($color-white, 0.925)
 
 .content-middle
-	width: calc(67% - 2em)
-	left: 15%
+	width: 65.25%
+	left: 14.75%
 	background-color: lighten($color-dark, 2%)
 	box-shadow: 0 0 6px rgba(0,0,0,0.25) inset
 	padding: 1em
@@ -124,11 +124,11 @@ body
 	position: relative
 
 	.video-name
-		color: fade-out($color-white, 0.5)
+		color: fade-out($color-white, 0.33)
 		font-size: 1.25em
 		text-shadow:  0 -1px 0 rgba(0,0,0,0.5)
 		display: inline-block
-		width: calc(100% - 1.5em)
+		width: calc(100% - 2rem)
 		position: absolute
 		top: 1rem
 		padding: 0.5em 0.75em
@@ -150,19 +150,11 @@ body
 	.image-wrap
 		width: calc(100% - 2em)
 		margin: 1.25em 1em
-		overflow: hidden
-		height: auto
 		position: relative
 		box-shadow: 0 1px 2px rgba(0,0,0,0.33)
-		transition: all ease-in-out $trans-speed
 		opacity: 1
-		min-height: 8.5em
 		background: fade-out($color-black, 0.75)
-
-		&.active
-			height: 0
-			margin: 0 1em
-			opacity: 0
+		display: block
 
 		.spinner
 			margin: auto
@@ -182,8 +174,9 @@ body
 		img
 			position: relative
 			max-width: 100%
-			min-height: 100%
+			height: auto
 			box-shadow: 0 -1px 0 fade-out($color-white, 0.75) inset
+			transition: height ease $trans-speed
 
 		.image-name
 			background: fade-out($color-black, 0.5)
