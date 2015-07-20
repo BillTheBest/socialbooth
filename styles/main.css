@@ -3,7 +3,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,45 +25,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -2105,13 +2105,21 @@ body {
 }
 
 /* line 19, ../sass/main.sass */
+::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+  background: transparent;
+  display: none;
+}
+
+/* line 25, ../sass/main.sass */
 .wrap-outer {
   position: fixed;
   width: 100%;
   height: 100%;
 }
 
-/* line 24, ../sass/main.sass */
+/* line 30, ../sass/main.sass */
 .wrap-inner {
   position: absolute;
   width: 100%;
@@ -2119,30 +2127,30 @@ body {
   overflow: hidden;
 }
 
-/* line 30, ../sass/main.sass */
+/* line 36, ../sass/main.sass */
 .content-left, .content-middle, .content-right {
   position: absolute;
   height: 100%;
   top: 0;
-  overflow: auto;
   vertical-align: top;
   background-image: url(../images/bg-body.png);
 }
 
-/* line 38, ../sass/main.sass */
+/* line 43, ../sass/main.sass */
 .content-left {
   width: 14.75%;
   left: 0;
   background-color: #154769;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), -1px 0 0 rgba(255, 255, 255, 0.075) inset;
   z-index: 3;
+  overflow: hidden;
 }
-/* line 45, ../sass/main.sass */
+/* line 51, ../sass/main.sass */
 .content-left .social-outer {
   display: inline-block;
   width: 100%;
 }
-/* line 49, ../sass/main.sass */
+/* line 55, ../sass/main.sass */
 .content-left .social-wrap {
   width: 100%;
   color: #f0f0f0;
@@ -2151,77 +2159,81 @@ body {
   display: block;
   border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.125);
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 67%, rgba(255, 255, 255, 0.033) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(67%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 0.033)));
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 67%, rgba(255, 255, 255, 0.033) 100%);
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 67%, rgba(255, 255, 255, 0.033) 100%);
-  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 67%, rgba(255, 255, 255, 0.033) 100%);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 67%, rgba(255, 255, 255, 0.033) 100%);
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 57%, rgba(255, 255, 255, 0.05) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(57%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 0.05)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 57%, rgba(255, 255, 255, 0.05) 100%);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 57%, rgba(255, 255, 255, 0.05) 100%);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 57%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 57%, rgba(255, 255, 255, 0.05) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#1affffff',GradientType=0 );
 }
-/* line 65, ../sass/main.sass */
+/* line 71, ../sass/main.sass */
+.content-left .social-wrap.social-custom {
+  background: #a54341;
+}
+/* line 74, ../sass/main.sass */
+.content-left .social-wrap.social-custom .social-name > p {
+  color: #dfb0af;
+}
+/* line 77, ../sass/main.sass */
 .content-left .social-inner {
   display: inline-block;
   padding: 1.5em 1em;
   margin: 0.25em 0;
   width: 100%;
 }
-/* line 71, ../sass/main.sass */
+/* line 83, ../sass/main.sass */
 .content-left .social-img {
   width: 3em;
   float: left;
   vertical-align: top;
 }
-/* line 76, ../sass/main.sass */
+/* line 88, ../sass/main.sass */
 .content-left .social-img img {
   width: 100%;
   border-radius: 0.33rem;
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
-/* line 82, ../sass/main.sass */
+/* line 94, ../sass/main.sass */
 .content-left .social-name {
   float: left;
   width: calc(100% - 3em);
   position: relative;
   z-index: 1;
 }
-/* line 88, ../sass/main.sass */
+/* line 100, ../sass/main.sass */
 .content-left .social-name > p {
   display: inline-block;
   width: calc(100% - 1em);
-  font-size: 0.925em;
+  font-size: 1.1em;
   margin: 0.33em 0 0.5em 1em;
   line-height: 1.33;
-}
-/* line 95, ../sass/main.sass */
-.content-left .social-name > p > span {
   color: #70abd5;
-  display: block;
 }
-/* line 99, ../sass/main.sass */
+/* line 108, ../sass/main.sass */
 .content-left .social-post {
   float: left;
   width: 100%;
   margin: 0.75em 0 0.33em;
 }
-/* line 104, ../sass/main.sass */
+/* line 113, ../sass/main.sass */
 .content-left .social-post > p {
   font-size: 0.85em;
   line-height: 1.25;
 }
-/* line 108, ../sass/main.sass */
+/* line 117, ../sass/main.sass */
 .content-left .social-icon {
   position: absolute;
-  right: 0.67em;
-  top: 0.67em;
-  font-size: 1.5em;
+  right: 0.33em;
+  top: 0.33em;
+  font-size: 1.75em;
   color: #0d1f2c;
   z-index: 0;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.075);
 }
 
-/* line 117, ../sass/main.sass */
+/* line 126, ../sass/main.sass */
 .content-middle {
   width: 65.25%;
   left: 14.75%;
@@ -2231,7 +2243,7 @@ body {
   z-index: 2;
   position: relative;
 }
-/* line 126, ../sass/main.sass */
+/* line 135, ../sass/main.sass */
 .content-middle .video-name {
   color: rgba(255, 255, 255, 0.67);
   font-size: 1.25em;
@@ -2243,23 +2255,33 @@ body {
   padding: 0.5em 0.75em;
   left: 1rem;
   background: rgba(0, 0, 0, 0.5);
+  transition: padding ease 0.75s;
 }
-/* line 138, ../sass/main.sass */
+/* line 148, ../sass/main.sass */
+.content-middle .video-name:empty {
+  padding: 0;
+}
+/* line 151, ../sass/main.sass */
 .content-middle video {
   height: auto;
   width: 100%;
-  display: inline-block;
 }
 
-/* line 143, ../sass/main.sass */
+/* line 155, ../sass/main.sass */
+#videoPlay {
+  display: none;
+}
+
+/* line 158, ../sass/main.sass */
 .content-right {
   width: 20%;
   right: 0;
   background-color: #1e1e1e;
   box-shadow: -2px 0 6px rgba(0, 0, 0, 0.25), 1px 0 0 rgba(255, 255, 255, 0.075) inset;
   z-index: 1;
+  overflow: hidden;
 }
-/* line 150, ../sass/main.sass */
+/* line 166, ../sass/main.sass */
 .content-right .image-wrap {
   width: calc(100% - 2em);
   margin: 1.25em 1em;
@@ -2269,7 +2291,7 @@ body {
   background: rgba(0, 0, 0, 0.25);
   display: block;
 }
-/* line 159, ../sass/main.sass */
+/* line 175, ../sass/main.sass */
 .content-right .image-wrap .spinner {
   margin: auto;
   width: 5em;
@@ -2281,12 +2303,12 @@ body {
   left: 0;
   font-size: 0.75em;
 }
-/* line 170, ../sass/main.sass */
+/* line 186, ../sass/main.sass */
 .content-right .image-wrap .spinner > div {
   height: 1em;
   width: 1em;
 }
-/* line 174, ../sass/main.sass */
+/* line 190, ../sass/main.sass */
 .content-right .image-wrap img {
   position: relative;
   max-width: 100%;
@@ -2294,7 +2316,7 @@ body {
   box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.25) inset;
   transition: height ease 0.75s;
 }
-/* line 181, ../sass/main.sass */
+/* line 197, ../sass/main.sass */
 .content-right .image-wrap .image-name {
   background: rgba(0, 0, 0, 0.5);
   color: rgba(255, 255, 255, 0.67);

@@ -11,26 +11,29 @@
 		<div class="wrap-inner" ng-controller="SocialBooth">
 			<div class="content-left" ng-init="loadPosts()">
 
-				<div class="social-wrap" id="social{{$index}}" ng-repeat="feedPost in feedPosts" social-item>
+				<div class="social-wrap social-{{feedPost.site}}" id="social{{$index}}" ng-repeat="feedPost in feedPosts" social-item>
 					<div class="social-inner">
 						<div class="social-img">
-							<img ng-src="{{feedPost.img}}">
+							<img ng-src="{{feedPost.avatar_url}}">
 						</div>
 						<div class="social-name">
-							<p>{{feedPost.name}} <span>{{feedPost.user}}</span></p>
+							<p>{{feedPost.screen_name}}</p>
 						</div>
 						<div class="social-post">
-							<p>{{feedPost.post}}</p>
+							<p>{{feedPost.title}}</p>
 						</div>
 						<div class="social-icon">
-							<i class="icon icon-{{feedPost.type}}"></i>
+							<i class="icon icon-{{feedPost.site}}"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="content-middle" ng-init="loadVideos()">
-				<div class="video-wrap"  id="videoPlay"></div>
+			<div class="content-middle">
+				<div class="video-wrap"  id="videoPlay">
+					<!-- <p class="video-name">{{currVideoName}}</p> -->
+					<video width="100%" height="auto" controls autoplay video-item="videoElem"></video>
+				</div>
 			</div>
 
 			<div class="content-right" ng-init="loadImages()">
@@ -40,8 +43,8 @@
 						<div class="bounce2"></div>
 						<div class="bounce3"></div>
 					</div>
-					<img ng-src="{{feedImage.src}}">
-					<p class="image-name">{{feedImage.name}}</p>
+					<img ng-src="{{feedImage.filename}}">
+					<!-- <p class="image-name">{{feedImage.name}}</p> -->
 				</div>
 			</div>
 
