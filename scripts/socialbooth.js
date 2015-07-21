@@ -170,7 +170,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
     };
 
     $scope.removePost = function(){
-      angular.element('#social0').animate({ height: 0, opacity: 0 }, 1000, function(){
+      angular.element('#social0').slideUp($scope.animationSpeed, function(){
         $scope.feedPosts.shift();
         $scope.feedPostsHeight.shift();
         $scope.$apply();
@@ -184,7 +184,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
     }
 
     $scope.removeImage = function(){
-      angular.element('#image0').animate({ height: 0, opacity: 0 }, 1000, function(){
+      angular.element('#image0').slideUp($scope.animationSpeed, function(){
         $scope.feedImages.shift();
         $scope.feedImagesHeight.shift();
         $scope.$apply();
