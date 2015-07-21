@@ -21,6 +21,10 @@
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	&:before {
+		-webkit-transform: scale(0.85,0.85);
+	}
 }
 
 .icon-spinner:before {

@@ -17,7 +17,10 @@
 							<img ng-src="{{feedPost.avatar_url}}">
 						</div>
 						<div class="social-name">
-							<p>{{feedPost.screen_name}}</p>
+							<p>
+								{{feedPost.screen_name}}
+								<span>{{feedPost.name}}</span>
+							</p>
 						</div>
 						<div class="social-post">
 							<p>{{feedPost.title}}</p>
@@ -31,7 +34,7 @@
 
 			<div class="content-middle">
 				<div class="video-wrap" id="videoPlay">
-					<video width="100%" height="auto" autoplay controls video-item="videoElem"></video>
+					<video width="100%" height="auto" autoplay video-item="videoElem"></video>
 				</div>
 			</div>
 

@@ -18,7 +18,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
     return {
       link: function($scope, element, attrs){
         $scope.getData = function(toEnd){ 
-          $http({method: 'GET', url: 'feeds/feedVideos.json'}).
+          $http({method: 'GET', url: '/app/videofeed'}).
             success(function(data) {
               $scope.updateVideos(data.feed);
               $scope.$watch('videoElem', function(){
@@ -107,7 +107,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
     };
 
     $scope.loadPosts = function() {
-      $http({method: 'GET', url: 'feeds/feedSocial.json'}).
+      $http({method: 'GET', url: '/app/socialfeed/' + $scope.minPosts}).
         success(function(data) {
 
           if ($scope.postStatus === 'init') {
@@ -139,7 +139,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
     };
 
     $scope.loadImages = function() {
-      $http({method: 'GET', url: 'feeds/feedImages.json'}).
+      $http({method: 'GET', url: '/app/photofeed/' + $scope.minImages}).
         success(function(data) {
           if ($scope.imageStatus === 'init') {
             $scope.imageStatus = 'running';
@@ -170,7 +170,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
     };
 
     $scope.removePost = function(){
-      angular.element('#social0').slideUp(1000, function(){
+      angular.element('#social0').animate({ height: 0, opacity: 0 }, 1000, function(){
         $scope.feedPosts.shift();
         $scope.feedPostsHeight.shift();
         $scope.$apply();
@@ -184,7 +184,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
     }
 
     $scope.removeImage = function(){
-      angular.element('#image0').slideUp(1000, function(){
+      angular.element('#image0').animate({ height: 0, opacity: 0 }, 1000, function(){
         $scope.feedImages.shift();
         $scope.feedImagesHeight.shift();
         $scope.$apply();
