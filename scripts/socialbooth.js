@@ -17,18 +17,21 @@ angular.module('app', ['angular-underscore','ngVideo'])
   .directive('videoItem', function($http){
     return {
       link: function($scope, element, attrs){
-        function getData(){ 
+        $scope.getData = function(toEnd){ 
           $http({method: 'GET', url: 'feeds/feedVideos.json'}).
             success(function(data) {
               $scope.updateVideos(data.feed);
               $scope.$watch('videoElem', function(){
                 element.bind('ended', function(){
-                  if (data.feed.length - 1 > $scope.currVideoID) {
+                  if (data.feed.length - 1 > $scope.currVideoID){
                     $scope.currVideoID++;
                     $scope.updateVideos(data.feed);
                   } else {
                     $scope.currVideoID = 0;
-                    getData();
+                    if(toEnd === true){
+                      element.unbind();
+                      $scope.getData(true);
+                    }
                   }
                 });      
               });
@@ -36,8 +39,10 @@ angular.module('app', ['angular-underscore','ngVideo'])
             error(function(data, status) {
               alert(status + ' - Could not load videos');
           });
-        }
-        getData();
+        };
+        angular.element(document).ready(function(){
+          $scope.getData(true);
+        });
       }
     };
   })
@@ -60,31 +65,40 @@ angular.module('app', ['angular-underscore','ngVideo'])
     $scope.postStatus = 'init';
     $scope.imageStatus = 'init';
     $scope.delaySlide = 3600;
-    $scope.animationSpeed = 1000;
+    $scope.animationSpeed = 1200;
     $scope.currVideoSrc = '';
     $scope.currVideoName = '';
     $scope.currVideoID = 0;
-    $scope.minPosts = 0;
-    $scope.minImages = 0;
+    $scope.minPosts = 12;
+    $scope.minImages = 12;
     $scope.feedPosts = [];
     $scope.feedVideos = [];
     $scope.feedImages = [];
     $scope.feedPostsHeight = [];
     $scope.feedImagesHeight = [];
 
-    function updatePosts(data){
+    $scope.shuffleArray = function(array) {
+      var m = array.length, t, i;
+      while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+      }
+      return array;
+    }
+
+    $scope.updatePosts = function(data){
       $scope.feedPostsHeight = [];
       $scope.feedPosts = data;
     }
 
-    function updateImages(data){
+    $scope.updateImages = function(data){
       $scope.feedImagesHeight = [];
       $scope.feedImages = data;
     }
 
     $scope.updateVideos = function(data){
-
-      // $scope.currVideoName = data[$scope.currVideoID].name;
       angular.element('#videoPlay video').html('<source src="'+data[$scope.currVideoID].filename+'" type="video/mp4">Your browser does not support');
       angular.element('#videoPlay').fadeOut($scope.animationSpeed, function(){
         angular.element('#videoPlay video').get(0).load();
@@ -98,7 +112,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
 
           if ($scope.postStatus === 'init') {
             $scope.postStatus = 'running';
-            updatePosts(data.feed);
+            $scope.updatePosts(data.feed);
           }
           else if (data.length < $scope.minPosts){
             if (String($scope.feedPosts) !== String(data) && $scope.postStatus !== 'delayed'){
@@ -111,11 +125,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
             }
           } else {
             if (data.playListOrder === 'random'){
-              var tempArray = [];
-              for (var i = 0; i < $scope.minPosts; i++){
-                tempArray.push(data.feed[Math.floor(Math.random() * data.feed.length)]);
-              }
-              $scope.feedPosts.push.apply($scope.feedPosts, tempArray);
+              $scope.feedPosts.push.apply($scope.feedPosts, $scope.shuffleArray(data.feed));
               $scope.postStatus = 'running';
             } else {
               $scope.feedPosts.push.apply($scope.feedPosts, data.feed);
@@ -133,7 +143,7 @@ angular.module('app', ['angular-underscore','ngVideo'])
         success(function(data) {
           if ($scope.imageStatus === 'init') {
             $scope.imageStatus = 'running';
-            updateImages(data.feed);
+            $scope.updateImages(data.feed);
           }
           else if (data.length < $scope.minImages){
             if (String($scope.feedImages) !== String(data) && $scope.imageStatus !== 'delayed'){
@@ -145,8 +155,13 @@ angular.module('app', ['angular-underscore','ngVideo'])
               }, $scope.delaySlide * 3);
             }
           } else {
-            $scope.feedImages.push.apply($scope.feedImages, data.feed);
-            $scope.imageStatus = 'running';
+            if (data.playListOrder === 'random'){
+              $scope.feedImages.push.apply($scope.feedImages, $scope.shuffleArray(data.feed));
+              $scope.imageStatus = 'running';
+            } else {
+              $scope.feedImages.push.apply($scope.feedImages, data.feed);
+              $scope.imageStatus = 'running';
+            }
           }
         }).
         error(function(data, status) {
